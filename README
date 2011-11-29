@@ -1,0 +1,31 @@
+This project illustrates the use of Maven modules to separate layers and/or concerns into
+individual projects.  In this example, the parent project is mav-mod.  Its modules are:
+
+- mav-mod-model
+- mav-mod-persistence
+- mav-mod-service
+- mav-mod-webapp
+
+As it happens in this example, mav-mod-persistence includes mav-mod-model as a dependency; 
+mav-mod-service includes mav-mod-persistence as a dependency; and mav-mod-webapp includes
+mav-mod-service as a dependency.  
+
+When you look at each module's pom.xml file, you will notice that it has a restricted number of 
+dependencies -- typically only those dependencies that it needs but cannot find in any of the 
+module(s) it includes.  Therefore, mav-mod-model includes only those dependencies it needs, which are
+few -- essentially JUnit and logging dependencies. 
+
+Because mav-mod-persistence includes mav-mod-model as a dependency, it inherits JUnit and the logging
+dependencies.  It adds a few new depenencies of its own, such as Spring.
+
+Likewise, because mav-mod-service includes mav-mod-persistence as a dependency, it inherits all of 
+mav-mod-persistence's dependencies, which include all of mav-mod-model's dependencies.  It adds 
+a few of its own dependencies.
+
+Finally, because mav-mod-webapp includes mav-mod-service as a dependency, it inherits all of
+mav-mod-service's dependencies.  Because it already has so many inherited dependencies, it only
+needs to define the dependencies it can't find from the other modules.
+
+Note that when you add a testing dependency library, such as JUnit, to a module, do not set its scope
+to "test" if you want other modules to inherit that library when they refer to the module including
+the testing library.
