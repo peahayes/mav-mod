@@ -1,8 +1,6 @@
 # Compiled Source #
 ###################
 /target
-target
-target/classes
 *.class
 # Package Files #
 #################
@@ -41,4 +39,3 @@ local.properties
 # PDT-specific #
 ################
 .buildpath
-/gitignore
