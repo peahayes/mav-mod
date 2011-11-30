@@ -36,7 +36,7 @@ a few of its own dependencies.
 
 Finally, because mav-mod-webapp includes mav-mod-service as a dependency, it inherits all of
 mav-mod-service's dependencies.  Because it already has so many inherited dependencies, it only
-needs to define the dependencies it can't find from the other modules.
+needs to define the dependencies it can't find in the other modules.
 
 Note that when you add a testing dependency library, such as JUnit, to a module, do not set its scope
 to "test" if you want other modules to inherit that library when they refer to the module including
@@ -71,7 +71,7 @@ A. Clone the mav-mod Git Repository
    
 B. Import mav-mod into Eclipse
    
-1. In the Git Repositories tab, expand the mav-mod Git clone.
+	1. In the Git Repositories tab, expand the mav-mod Git clone.
 	
 	2. Right-click on Working Directory and select Import Projects...
 	
@@ -90,12 +90,12 @@ C. Force Eclipse to Display mav-mod and its Modules Separately
 	
 	2. Select Maven/Existing Maven Projects
 
-	3. Click Next, and Browse to select mav-mod/mav-mod-model
+	3. Click Next, and Browse to select mav-mod/mav-mod-model (or one of the other modules)
 	
 	4. Click Finish
 	
-When you have completed all these steps, you should see in your Eclipse Project Explorer or Package 
-Explorer five projects, one after another:
+When you have completed all these steps, you should see five projects in your Eclipse Project Explorer 
+or Package Explorer.
 
 mav-mod
 mav-mod-model
