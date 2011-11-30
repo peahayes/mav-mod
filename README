@@ -1,3 +1,15 @@
+TABLE OF CONTENTS
+
+1. Background
+
+2. Checking Out and Importing into Eclipse 3.7.1
+
+3. Running the webapp
+
+-------------
+1. Background
+-------------
+
 This project illustrates the use of Maven modules to separate layers and/or concerns into
 individual projects.  In this example, the parent project is mav-mod.  Its modules are:
 
@@ -29,3 +41,76 @@ needs to define the dependencies it can't find from the other modules.
 Note that when you add a testing dependency library, such as JUnit, to a module, do not set its scope
 to "test" if you want other modules to inherit that library when they refer to the module including
 the testing library.
+
+------------------------------------------------
+2. Checking Out and Importing into Eclipse 3.7.1
+------------------------------------------------
+
+Through trial and error, I figured out how to check out this application so that it displays in 
+Eclipse non-hierarchically, and so that you can use Team -> Synchronize Workspace to interact with 
+Git.  By "non-hierarchically", I mean that the parent project and all of the modules appear as 
+separate projects in Eclipse, rather than only the parent project appearing, with a folder for each 
+module inside that project.
+
+Follow these steps (there may be other ways, but this should work):
+
+A. Clone the mav-mod Git Repository
+
+	1. Select File -> Import... -> Git/Projects from Git
+
+	2. Click Next, and click Clone...
+
+	3. Enter or paste the URI from GitHub and click Next, and then Next again
+
+	4. Click Browse to select a directory in which to install the app.
+
+	5. Click Next, and then click Finish
+
+	6. In the Select a Git Repository, click Cancel.  These steps simply clone
+	   the Git repository for the mav-mod application.
+   
+B. Import mav-mod into Eclipse
+   
+1. In the Git Repositories tab, expand the mav-mod Git clone.
+	
+	2. Right-click on Working Directory and select Import Projects...
+	
+	3. Choose Import as general project.
+	
+	4. Click Next, and then click Finish.
+	
+	5. Right-click on the mav-mod project and select Team -> Synchronize Workspace to 
+	   verify that you can use eGit directly on the project
+
+C. Force Eclipse to Display mav-mod and its Modules Separately
+
+	Repeat the following steps once for each module of the  mav-mod project.
+
+	1. Select File -> Import...
+	
+	2. Select Maven/Existing Maven Projects
+
+	3. Click Next, and Browse to select mav-mod/mav-mod-model
+	
+	4. Click Finish
+	
+When you have completed all these steps, you should see in your Eclipse Project Explorer or Package 
+Explorer five projects, one after another:
+
+mav-mod
+mav-mod-model
+mav-mod-persistence
+mav-mod-service
+mav-mod-webapp
+
+You will not be able to do Team -> Synchronize Workspace from the modules, but you can do so 
+from mav-mod (the parent), and the it will show changes you've made in the modules.  To verify this, 
+make a minor change in one of the modules, and then select Team -> Synchronize Workspace to see that 
+eGit knows you've made a change.
+
+---------------------
+3. Running the Webapp
+---------------------
+
+The mav-mod-webapp can be run in either Resin or Tomcat.  Once the app is up and running, you can 
+access it with this URL: http://localhost:<your-port>/mav-mod-webapp/
