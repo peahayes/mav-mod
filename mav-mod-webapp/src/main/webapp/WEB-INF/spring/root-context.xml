@@ -16,8 +16,15 @@
 			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
 	default-lazy-init="false">
 
+	<context:annotation-config />
 	<context:component-scan base-package="org.foo" />
 
-	<context:annotation-config />
+	<!--Advises all beans marked with the @Repository annotation so that the discovered translators can intercept and apply the appropriate translation on the thrown exception.  -->
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+   	
+   	<!-- Use classes instead of interfaces when proxying. Important when transactional methods are employed within Daos to be managed by spring container. -->
+	<!-- If not used then by default for classes that implement an interface a proxy will be created implementing that interface instead of using the class proxy -->
+<!-- 	<aop:config proxy-target-class="true" /> -->
+	<import resource="hibernate-context.xml"  />
 
 </beans>

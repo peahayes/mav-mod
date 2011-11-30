@@ -3,6 +3,7 @@ package org.foo.service;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
+import static org.mockito.Matchers.eq;
 
 import org.foo.domain.User;
 import org.foo.persistence.UserDaoInMemory;
@@ -36,12 +37,12 @@ public class TestUserService {
 	@Test
 	public void testAddAndRetrieveUser() {
 		
-		assertNull (userService.retrieveUser());
+		assertNull (userService.retrieveUser (user.getId()));
 		
-		when (userDao.getUser()).thenReturn (user);
+		when (userDao.getById (eq (user.getId()))).thenReturn (user);
 		
 		userService.addUser (user);
 
-		assertNotNull (userService.retrieveUser());
+		assertNotNull (userService.retrieveUser (eq (user.getId())));
 	}
 }

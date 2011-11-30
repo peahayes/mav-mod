@@ -1,12 +1,14 @@
 package org.foo.web;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.foo.domain.User;
@@ -56,7 +58,10 @@ public class TestUserController {
 	@Test
 	public void testGetUser() 
 	{
-		when (userService.retrieveUser()).thenReturn (user);
+		List<User> users = new ArrayList<User>();
+		users.add (user);
+		
+		when (userService.getAll()).thenReturn (users);
 		
 		String path = controller.getUser (Locale.getDefault(), model);
 		

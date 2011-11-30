@@ -27,11 +27,11 @@ public class TestUserDaoInMemory {
 	@Test
 	public void testAddAndGetUser() 
 	{
-		assertNull (userDao.getUser());
+		assertNull (userDao.getById (user.getId()));
 		
-		userDao.addUser (user);
+		userDao.add (user);
 
-		assertEquals (user, userDao.getUser());
+		assertEquals (user, userDao.getById (user.getId()));
 	}
 
 }

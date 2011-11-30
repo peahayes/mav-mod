@@ -8,7 +8,7 @@
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>mav-mod-persistence</artifactId>
-
+	
 	<repositories>
 		<!-- For testing against latest Spring snapshots -->
 		<repository>
@@ -40,7 +40,7 @@
 	</properties>
 
 	<dependencies>
-		
+
 		<!-- This project's module(s) -->
 		<dependency>
 			<groupId>org.foo</groupId>
@@ -61,11 +61,30 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+		
+		<!-- Persistence -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
+			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework-version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>3.6.7.Final</version>
+			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>
+	
 </project>

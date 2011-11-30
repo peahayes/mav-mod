@@ -25,6 +25,7 @@
 
 	<dependencies>
 
+		<!-- Testing -->
 		<dependency>
 			<artifactId>junit</artifactId>
 			<groupId>junit</groupId>
@@ -63,6 +64,21 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<!-- Persistence -->
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		
 
 	</dependencies>
 
