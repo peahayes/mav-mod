@@ -1,6 +1,7 @@
 # Compiled Source #
 ###################
 /target
+target
 *.class
 # Package Files #
 #################
